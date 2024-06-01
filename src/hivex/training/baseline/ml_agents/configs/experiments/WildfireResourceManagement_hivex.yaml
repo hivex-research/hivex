@@ -1,0 +1,5 @@
+experiment_name: WildfireResourceManagement
+train_config_path: /configs/mlagents/train/WildfireResourceManagement_hivex.yaml
+test_config_path: /configs/mlagents/test/WildfireResourceManagement_hivex.yaml
+train_run_count: 3
+test_run_count: 3

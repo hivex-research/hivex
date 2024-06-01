@@ -1,0 +1,5 @@
+experiment_name: Wildfire
+train_config_path: /configs/mlagents/train/Wildfire_hivex.yaml
+test_config_path: /configs/mlagents/test/Wildfire_hivex.yaml
+train_run_count: 10
+test_run_count: 10

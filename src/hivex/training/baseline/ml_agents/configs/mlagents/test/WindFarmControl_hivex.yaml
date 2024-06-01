@@ -1,0 +1,41 @@
+behaviors:
+  Agent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 256
+      buffer_size: 2048
+      learning_rate: 0
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 64
+      num_layers: 2
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+    keep_checkpoints: 5
+    max_steps: 8000000 # 8 turbines a 5000 steps = 40000 * 200
+    time_horizon: 2048
+    summary_freq: 40000 # 8 turbines a 5000 steps = 40000
+    threaded: true
+
+engine_settings:
+  no_graphics: true
+
+env_settings:
+  env_path: /dev_environments/Hivex_WindFarmControl_win
+  # training: 5000, inference: 6000
+  seed: 6000
+
+environment_parameters:
+  # Pattern: 0 Default, 1 Grid, 2 Chain, 3 Circle, 4 Square, 5 Cross,
+  # 6 Two_Rows, 7 Field, 8 Random
+  pattern: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  task: [0, 1]
+  # Generate Energy: 0
+  # Avoid Damage: 1

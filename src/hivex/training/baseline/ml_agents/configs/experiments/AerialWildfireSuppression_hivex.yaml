@@ -1,0 +1,5 @@
+experiment_name: AerialWildfireSuppression
+train_config_path: /configs/mlagents/train/AerialWildfireSuppression_hivex.yaml
+test_config_path: /configs/mlagents/test/AerialWildfireSuppression_hivex.yaml
+train_run_count: 3
+test_run_count: 3

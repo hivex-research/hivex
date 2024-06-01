@@ -1,0 +1,5 @@
+experiment_name: Reforestation
+train_config_path: /configs/mlagents/train/Reforestation_hivex.yaml
+test_config_path: /configs/mlagents/test/Reforestation_hivex.yaml
+train_run_count: 10
+test_run_count: 10

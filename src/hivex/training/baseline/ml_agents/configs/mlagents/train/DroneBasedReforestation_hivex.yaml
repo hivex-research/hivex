@@ -1,0 +1,54 @@
+behaviors:
+  Agent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 8192
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: resnet
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 0.9
+        network_settings:
+          vis_encode_type: resnet
+      curiosity:
+        gamma: 0.99
+        strength: 0.1
+        encoding_size: 256
+        learning_rate: 0.0003
+        network_settings:
+          vis_encode_type: resnet
+    keep_checkpoints: 5
+    max_steps: 1200000 # 3 agents a 2000 steps = 6000 * 200
+    time_horizon: 8192
+    summary_freq: 6000 # 3 agents a 2000 steps = 6000
+    threaded: true
+
+engine_settings:
+  no_graphics: true
+
+env_settings:
+  env_path: /dev_environments/Hivex_DroneBasedReforestation_win
+  # training: 5000, inference: 6000
+  seed: 5000
+
+environment_parameters:
+  difficulty: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  task: [0, 1, 2, 3, 4, 5, 6]
+  # Main: 0
+  # Find Closest Tree: 1
+  # Pick Up Seed: 2
+  # Drop Seed: 3
+  # Find High Potential Area: 4
+  # Find High Terrain: 5
+  # Explore Furthest: 6

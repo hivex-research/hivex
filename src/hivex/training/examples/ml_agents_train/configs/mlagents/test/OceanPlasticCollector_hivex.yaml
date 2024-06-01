@@ -1,0 +1,53 @@
+behaviors:
+  Agent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 0
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: resnet
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 0.9
+        network_settings:
+          vis_encode_type: resnet
+      curiosity:
+        gamma: 0.99
+        strength: 0.1
+        encoding_size: 256
+        learning_rate: 0
+        network_settings:
+          vis_encode_type: resnet
+    keep_checkpoints: 5
+    max_steps: 18000000 # 12 arenas a 3 agents a 5000 steps = 180000 * 100
+    time_horizon: 100
+    summary_freq: 180000 # 12 arenas a 3 agents a 5000 steps = 180000
+    threaded: true
+
+engine_settings:
+  no_graphics: true
+
+env_settings:
+  env_path: /builds/OceanPlasticCollector_hivex_windows
+  num_envs: 12
+  # training: 5000, inference: 6000
+  seed: 6000
+
+environment_parameters:
+  # 0 false, 1 true
+  training: 1
+  arena_count: 1
+  agent_count: 3
+  # Communication: 0 No_Communication, 1 Broadcasting
+  communication: [0, 1]
+  neighbour_count: 1

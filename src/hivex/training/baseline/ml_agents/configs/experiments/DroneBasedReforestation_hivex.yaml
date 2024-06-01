@@ -1,0 +1,5 @@
+experiment_name: DroneBasedReforestation
+train_config_path: /configs/mlagents/train/DroneBasedReforestation_hivex.yaml
+test_config_path: /configs/mlagents/test/DroneBasedReforestation_hivex.yaml
+train_run_count: 3
+test_run_count: 3

@@ -1,0 +1,13 @@
+name: "WindFarmControl_V0"
+tag: "WindFarmControl"
+file_name: "src/hivex/dev_environments/Hivex_WindFarmControl_win/Hivex_WindfarmControl.exe"
+episode_horizon: 5000
+env_parameters:
+  training: 1
+  agent_count: 8
+  # pattern: Default: 0, Grid: 1, Chain: 2, Circle: 3, Square: 4, Cross: 5, Two Rows: 6, Field: 7, Random: 8
+  pattern: 0
+tasks:
+  Generate Energy: 0
+  Avoid Damage: 1
+no_graphics: True

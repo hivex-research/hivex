@@ -1,0 +1,5 @@
+experiment_name: WindFarm
+train_config_path: /configs/mlagents/train/WindFarm_hivex.yaml
+test_config_path: /configs/mlagents/test/WindFarm_hivex.yaml
+train_run_count: 10
+test_run_count: 10

@@ -1,0 +1,5 @@
+experiment_name: OceanPlasticCollection
+train_config_path: /configs/mlagents/train/OceanPlasticCollection_hivex.yaml
+test_config_path: /configs/mlagents/test/OceanPlasticCollection_hivex.yaml
+train_run_count: 3
+test_run_count: 3

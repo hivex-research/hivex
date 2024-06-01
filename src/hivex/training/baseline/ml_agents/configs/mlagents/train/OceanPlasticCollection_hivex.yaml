@@ -1,0 +1,50 @@
+behaviors:
+  Agent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: resnet
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 0.9
+        network_settings:
+          vis_encode_type: resnet
+      curiosity:
+        gamma: 0.99
+        strength: 0.1
+        encoding_size: 256
+        learning_rate: 0.0003
+        network_settings:
+          vis_encode_type: resnet
+    keep_checkpoints: 5
+    max_steps: 3000000 # 3 agents a 5000 steps = 15000 * 200
+    time_horizon: 10240
+    summary_freq: 15000 # 3 agents a 5000 steps = 15000
+    threaded: true
+
+engine_settings:
+  no_graphics: true
+
+env_settings:
+  env_path: /dev_environments/Hivex_OceanPlasticCollection_win
+  # training: 5000, inference: 6000
+  seed: 5000
+
+environment_parameters:
+  task: [0, 1, 2, 3]
+  # Main: 0
+  # Find High Pollution Area: 1
+  # Group up: 2
+  # Avoid Plastic: 3
