@@ -49,13 +49,7 @@ as follows:
    ```shell
    git clone git@github.com:hivex-research/hivex.git
    cd hivex
-   pip install -e . --no-deps
-   ```
-
-4. Test the `hivex` installation using `pytest`:
-   ```shell
-   pip install pytest
-   pytest tests/test_hivex.py
+   pip install -e .
    ```
 
 ## Train and Test using ML-Agents
@@ -85,3 +79,10 @@ as follows:
 ## Results Baseline
 
 All results can be found in the [hivex-results](https://github.com/hivex-research/hivex-results) repository.
+
+## Adding/Updating dependencies
+
+```shell
+pip install pip-compile-multi
+pip-compile-multi --autoresolve
+```

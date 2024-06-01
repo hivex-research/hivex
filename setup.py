@@ -1,5 +1,26 @@
 from importlib import util
+from pathlib import Path
 from setuptools import setup, find_packages
+
+reqs_dir = Path("./requirements")
+
+
+def read_requirements(filename: str):
+    requirements_file = reqs_dir / filename
+    if requirements_file.is_file():
+        reqs = requirements_file.read_text().splitlines()
+        return [
+            req.strip()
+            for req in reqs
+            if not req.strip().startswith("#")
+            and req != ""
+            and not req.startswith("-r")
+        ]
+    else:
+        return []
+
+
+requirements_base = read_requirements("base.txt")
 
 
 def get_version():
@@ -37,4 +58,5 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src"),
     python_requires=">=3.8",
+    install_requires=requirements_base,
 )
