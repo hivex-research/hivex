@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="docs/images/hivex_thumbnail.png"
+  <img src="docs/images/hivex_thumb.png"
       style="border-radius:20px"
       alt="hivex header image"/>
 </div>
 
 # HIVEX
 
-_Multi-Agent Reinforcement Learning environment suite with a focus on real-world, climate related domains._
+_Multi-Agent Reinforcement Learning environment suite with a focus on critical ecological challenges._
 
 ## About
 
@@ -18,11 +18,11 @@ The motivation of the hivex suite is to provide advanced reinforcement learning 
 
 | Thumbnail | Title | Tag | Tasks | Difficulty Levels |
 | --- | --- | --- | --- | --- |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_WindFarmControl/"><img src="https://github.com/hivex-research/hivex/master/docs/images/WindFarmControl_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Wind Farm Control"></a> | Wind Farm Control | <code>WindFarmControl</code> | 2 | 9 |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_WilfireResourceManagement/"><img src="https://github.com/hivex-research/hivex/master/docs/images/WildfireResourceManagement_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Wildfire Resource Management"></a> | Wildfire Resource Management | <code>WildfireResourceManagement</code> | 3 | 10 |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_DroneBasedReforestation/"><img src="https://github.com/hivex-research/hivex/master/docs/images/DroneBasedReforestation_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Drone-Based Reforestation"></a> | Drone-Based Reforestation |<code>DroneBasedReforestation</code> | 7 | 10 |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_OceanPlasticCollection/"><img src="https://github.com/hivex-research/hivex/master/docs/images/OceanPlasticCollection_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Ocean Plastic Collection"></a> | Ocean Plastic Collection | <code>OceanPlasticCollection</code> | 4 | - |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_AerialWildfireSuppression/"><img src="https://github.com/hivex-research/hivex/master/docs/images/AerialWildfireSuppression_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Aerial Wildfire Suppression"></a> | Aerial Wildfire Suppression | <code>AerialWildFireSuppression</code> | 9 | 10 |
+| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_WindFarmControl/"><img src="https://github.com/hivex-research/hivex/master/docs/images/WFC_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Wind Farm Control"></a> | Wind Farm Control | <code>WindFarmControl</code> | 2 | 9 |
+| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_WilfireResourceManagement/"><img src="https://github.com/hivex-research/hivex/master/docs/images/WRM_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Wildfire Resource Management"></a> | Wildfire Resource Management | <code>WildfireResourceManagement</code> | 3 | 10 |
+| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_DroneBasedReforestation/"><img src="https://github.com/hivex-research/hivex/master/docs/images/DBR_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Drone-Based Reforestation"></a> | Drone-Based Reforestation |<code>DroneBasedReforestation</code> | 7 | 10 |
+| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_OceanPlasticCollection/"><img src="https://github.com/hivex-research/hivex/master/docs/images/OPC_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Ocean Plastic Collection"></a> | Ocean Plastic Collection | <code>OceanPlasticCollection</code> | 4 | - |
+| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_AerialWildfireSuppression/"><img src="https://github.com/hivex-research/hivex/master/docs/images/AWS_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Aerial Wildfire Suppression"></a> | Aerial Wildfire Suppression | <code>AerialWildFireSuppression</code> | 9 | 10 |
 
 <br>
 
