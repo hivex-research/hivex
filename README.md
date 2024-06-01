@@ -26,7 +26,7 @@ The motivation of the hivex suite is to provide advanced reinforcement learning 
 
 <br>
 
-## Installation using conda virtual environment (recommendet)
+## Installation using conda virtual environment (recommended)
 
 The installation steps are
 as follows:
