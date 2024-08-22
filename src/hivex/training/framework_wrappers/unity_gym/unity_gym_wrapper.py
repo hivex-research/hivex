@@ -26,7 +26,7 @@ from mlagents_envs.base_env import ActionTuple, DecisionSteps, TerminalSteps
 from mlagents_envs import logging_util
 
 # hivex
-from hivex.training.wrapper_utils import (
+from hivex.training.framework_wrappers.wrapper_utils import (
     UnityEnvironment,
     get_vis_obs_list,
     get_vector_obs,
