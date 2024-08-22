@@ -26,7 +26,7 @@ from mlagents_envs import logging_util
 from pettingzoo.utils.env import ParallelEnv
 
 # hivex
-from hivex.training.wrapper_utils import (
+from hivex.training.framework_wrappers.wrapper_utils import (
     UnityEnvironment,
     action_is_continuous,
     action_is_discrete,
@@ -89,10 +89,10 @@ class HivexParallelEnvWrapper(ParallelEnv):
         """Environment specs."""
 
         # Check for number of agents in scene.
-        decision_steps, terminal_steps = self.env.get_steps(self.behavior_name)
+        decision_steps, _ = self.env.get_steps(self.behavior_name)
         """Next non-terminal step(s)."""
 
-        self.num_players = len(terminal_steps.agent_id)
+        self.num_players = len(decision_steps.agent_id)
         """Number of agent(s)."""
 
         self.possible_agents = [
