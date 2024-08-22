@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 import numpy as np
 import random
 import time
@@ -5,22 +6,31 @@ from typing import Callable, Optional, Tuple, List
 import random
 
 # RLlib
-from gymnasium.spaces import Box, Discrete, MultiDiscrete, Tuple as TupleSpace
+from gymnasium.spaces import Box, Discrete, Tuple as TupleSpace
 from ray.rllib.env.multi_agent_env import MultiAgentEnv
-from ray.rllib.policy.policy import PolicySpec
 from ray.rllib.utils.typing import MultiAgentDict, PolicyID, AgentID
+from ray.rllib.policy.policy import PolicySpec
 from ray.rllib.env.wrappers.unity3d_env import Unity3DEnv
+from ray.rllib.algorithms.ppo import PPOTorchPolicy
 
 # ML-Agents
 from mlagents_envs.side_channel.side_channel import SideChannel
 import mlagents_envs
 from mlagents_envs.environment import UnityEnvironment
-from mlagents_envs.base_env import ActionTuple
 
 
-class HivexBaseEnv(Unity3DEnv):
+class GameNames:
+    WindFarmControl = "WindFarmControl"
+    WildfireResourcing = "WildfireResourcing"
+    Reforestation = "Reforestation"
+    OceanPlasticCollection = "OceanPlasticCollection"
+    WildfireSuppression = "AerialWildfireSuppression"
+
+
+class HivexBaseEnv(Unity3DEnv, ABC):
     def __init__(
         self,
+        run_config,
         file_name: str = None,
         port: Optional[int] = None,
         seed: int = 0,
@@ -28,9 +38,19 @@ class HivexBaseEnv(Unity3DEnv):
         episode_horizon: int = 3000,
         stop_time_steps: int = 2000000,
         side_channel: List[SideChannel] = None,
-        no_graphics: bool = True,
+        no_graphics: bool = None,
+        policy: PolicySpec = None,
     ):
-        self.stats_channel = side_channel[1]
+
+        self.policy = policy
+
+        if no_graphics:
+            self.no_graphics = no_graphics
+        else:
+            self.no_graphics = run_config["no_graphics"]
+
+        if side_channel is not None:
+            self.stats_channel = side_channel[1]
 
         # Skip env checking as the nature of the agent IDs depends on the game
         # running in the connected Unity editor.
@@ -66,7 +86,7 @@ class HivexBaseEnv(Unity3DEnv):
                     worker_id=worker_id_,
                     base_port=port_,
                     seed=seed,
-                    no_graphics=no_graphics,
+                    no_graphics=self.no_graphics,
                     timeout_wait=timeout_wait,
                     side_channels=side_channel,
                 )
@@ -89,7 +109,7 @@ class HivexBaseEnv(Unity3DEnv):
         self.total_time_steps = 0
 
         # self agent tracker: is agent following LLM instructions or receives actions from NN
-        # self.unity_env.reset()
+        self.unity_env.reset()
         self.behavior_name = list(self.unity_env.behavior_specs)[0]
         agent_ids = list(self.unity_env.get_steps(self.behavior_name)[0].keys())
         self.all_agent_keys = [
@@ -97,82 +117,46 @@ class HivexBaseEnv(Unity3DEnv):
         ]
 
         print(f"AGENT COUNT: {len(self.all_agent_keys)}")
+
+        # reset stats reader
+        self.stats_channel.get_and_reset_stats()
+
         print("###################################################################")
         print("####################### ENVIRONMENT CREATED #######################")
         print("###################################################################")
 
+    @abstractmethod
     def step(
         self, action_dict: MultiAgentDict
     ) -> Tuple[
         MultiAgentDict, MultiAgentDict, MultiAgentDict, MultiAgentDict, MultiAgentDict
     ]:
-        """Performs one multi-agent step through the game.
-
-        Args:
-            action_dict: Multi-agent action dict with:
-                keys=agent identifier consisting of
-                [MLagents behavior name, e.g. "Goalie?team=1"] + "_" +
-                [Agent index, a unique MLAgent-assigned index per single agent]
-
-        Returns:
-            tuple:
-                - obs: Multi-agent observation dict.
-                    Only those observations for which to get new actions are
-                    returned.
-                - rewards: Rewards dict matching `obs`.
-                - dones: Done dict with only an __all__ multi-agent entry in
-                    it. __all__=True, if episode is done for all agents.
-                - infos: An (empty) info dict.
-        """
-
-        # print(f"--- STEP {self.episode_timesteps} ---")
-
-        obs, _, _, _, _ = self._get_step_results()
-
-        infos = {}
-
-        # Set only the required actions (from the DecisionSteps) in Unity3D.
-        # brain name: Agent
-
-        actions = []
-        for agent_id in self.all_agent_keys:
-            # agent_id = Agent?team=0_0
-
-            if agent_id not in action_dict:
-                continue
-
-            actions.append(action_dict[agent_id])
-
-        if len(actions) > 0:
-            if isinstance(actions[0], tuple):
-                action_tuple = ActionTuple(
-                    continuous=np.array([c[0] for c in actions]),
-                    discrete=np.array([c[1] for c in actions]),
-                )
-            else:
-                if actions[0].dtype == np.float32:
-                    action_tuple = ActionTuple(continuous=np.array(actions))
-                else:
-                    action_tuple = ActionTuple(discrete=np.array(actions))
-            self.unity_env.set_actions(self.behavior_name, action_tuple)
-
-        # Do the step.
-        self.unity_env.step()
-        obs, rewards, terminateds, truncateds, _ = self._get_step_results()
-        self.episode_timesteps += 1
-        self.total_time_steps += 1
-
-        return obs, rewards, terminateds, truncateds, infos
+        """Abstract method to be implemented by subclasses to perform an action in the environment."""
+        pass
 
     def reset(
         self, *, seed=None, options=None
     ) -> Tuple[MultiAgentDict, MultiAgentDict]:
-        print("### RESET ###")
+
+        print("-------------------------------------------------------------------")
+        print("####################### RESET #####################################")
+        print("-------------------------------------------------------------------")
+
+        # if this is the initial reset then reset the stats recorder
+        reset_stats_channel = self.episode_timesteps == 0
 
         """Resets the entire Unity3D scene (a single multi-agent episode)."""
         self.episode_timesteps = 0
-        self.unity_env.reset()
-        obs, _, _, _, infos = self._get_step_results()
+
+        # reset the stats recorder
+        if reset_stats_channel:
+            self.stats_channel.get_and_reset_stats()
+
+        obs, _, _, dones, infos = self._get_step_results()
+
+        if all(dones):
+            self.unity_env.reset()
+
         return obs, infos
 
     # override
@@ -233,67 +217,3 @@ class HivexBaseEnv(Unity3DEnv):
 
         # Only use dones if all agents are done, then we should do a reset.
         return obs, rewards, dones, dones, infos
-
-    # override
-    @staticmethod
-    def get_policy_configs_for_game(
-        game_name: str,
-    ) -> Tuple[dict, Callable[[AgentID], PolicyID]]:
-        # The RLlib server must know about the Spaces that the Client will be
-        # using inside Unity3D, up-front.
-        obs_spaces = {
-            "WindFarmControl": Box(float("-inf"), float("inf"), (6,), dtype=np.float32),
-            "WildfireResourceManagement": Box(
-                float("-inf"), float("inf"), (7,), dtype=np.float32
-            ),
-            "DroneBasedReforestation": TupleSpace(
-                [
-                    Box(float(0), float(1), (16, 16, 1)),
-                    Box(float("-inf"), float("inf"), (20,), dtype=np.float32),
-                ]
-            ),
-            "OceanPlasticCollection": TupleSpace(
-                [
-                    Box(float(0), float(1), (25, 25, 2)),
-                    Box(float("-inf"), float("inf"), (8,), dtype=np.float32),
-                ]
-            ),
-            "AerialWildfireSuppression": TupleSpace(
-                [
-                    Box(float(0), float(1), (42, 42, 3)),
-                    Box(float("-inf"), float("inf"), (8,), dtype=np.float32),
-                ]
-            ),
-        }
-        action_spaces = {
-            "WindFarmControl": MultiDiscrete([3]),
-            "WildfireResourceManagement": MultiDiscrete([3, 3, 3, 3]),
-            "DroneBasedReforestation": TupleSpace(
-                [
-                    Box(float(-1), float(1), (3,), dtype=np.float32),
-                    MultiDiscrete([2]),
-                ]
-            ),
-            "OceanPlasticCollection": MultiDiscrete([2, 3]),
-            "AerialWildfireSuppression": TupleSpace(
-                [
-                    Box(float(-1), float(1), (1,), dtype=np.float32),
-                    MultiDiscrete([2]),
-                ]
-            ),
-        }
-
-        policies = {
-            game_name: PolicySpec(
-                observation_space=obs_spaces[game_name],
-                action_space=action_spaces[game_name],
-            ),
-        }
-
-        def policy_mapping_fn(agent_id, episode, worker, **kwargs):
-            return game_name
-
-        return policies, policy_mapping_fn
-
-    def remap(value, from1, to1, from2, to2):
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2
