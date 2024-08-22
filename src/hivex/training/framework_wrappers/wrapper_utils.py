@@ -14,7 +14,7 @@
 # ============================================================================
 """HIVEX wrapper utilities."""
 
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Optional
 import numpy as np
 
 # ML-Agents
@@ -26,6 +26,47 @@ from mlagents_envs.side_channel.engine_configuration_channel import (
     EngineConfigurationChannel,
 )
 from mlagents_envs.base_env import ActionTuple, DecisionSteps, TerminalSteps
+from mlagents_envs.side_channel.stats_side_channel import StatsSideChannel
+from mlagents_envs.registry import UnityEnvRegistry
+
+
+def initialize_unity_environment(
+    worker_id: int,
+    time_scale: Optional[float] = 20.0,
+    env_path: Optional[str] = None,
+    hivex_env_tag: Optional[str] = "WindFarmControl",
+    no_graphics: Optional[bool] = True,
+    **kwargs,
+) -> UnityEnvironment:
+    worker_id += 1
+    env_parameter_channel = EnvironmentParametersChannel()
+    for key, value in kwargs.items():
+        env_parameter_channel.set_float_parameter(key, value)
+
+    if env_path:
+        engine_config_channel = EngineConfigurationChannel()
+        engine_config_channel.set_configuration_parameters(time_scale=time_scale)
+        unity_env = UnityEnvironment(
+            file_name=env_path,
+            worker_id=worker_id,
+            no_graphics=no_graphics,
+            side_channels=[env_parameter_channel, engine_config_channel],
+        )
+    else:
+        stats_channel = StatsSideChannel()
+        registry = UnityEnvRegistry()
+        registry.register_from_yaml(
+            "https://raw.githubusercontent.com/hivex-research/hivex-environments/main/hivex_environment_registry.yaml"
+        )
+        unity_env = registry[hivex_env_tag].make(
+            no_graphics=no_graphics,
+            worker_id=worker_id,
+            side_channels=[env_parameter_channel, stats_channel],
+        )
+
+    unity_env.reset()
+
+    return unity_env
 
 
 def check_unity_environment(env: UnityEnvironment) -> tuple([str, dict()]):
@@ -170,6 +211,8 @@ def update_observations(
     for agent in agents_to_be_updated:
         multi_agent_observations[agent] = observations[agent]
 
+    return multi_agent_observations
+
 
 def construct_observations(info, n_agents):
     agents_to_be_updated = info.agent_id
@@ -188,7 +231,13 @@ def construct_observations(info, n_agents):
         # vector observation
         if len(vector_obs) > 0:
             vec_obs = vector_obs[index]
-        observations[agent_id] = [vis_obs, vec_obs]
+
+        if len(vis_obs) == 0:
+            observations[agent_id] = [vec_obs]
+        elif len(vec_obs) == 0:
+            observations[agent_id] = [vis_obs]
+        else:
+            observations[agent_id] = [vis_obs, vec_obs]
 
     return observations
 

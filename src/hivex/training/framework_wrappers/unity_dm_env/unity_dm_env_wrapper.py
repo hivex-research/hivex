@@ -27,7 +27,7 @@ from dm_env import specs
 from mlagents_envs.base_env import ActionTuple, DecisionSteps, TerminalSteps
 
 # hivex
-from hivex.training.wrapper_utils import (
+from hivex.training.framework_wrappers.wrapper_utils import (
     UnityEnvironment,
     action_is_continuous,
     action_is_discrete,
