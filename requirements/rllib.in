@@ -1,0 +1,4 @@
+-r base.in
+ray[rllib]==2.8.1
+GPUtil
+numpy<2.0,>=1.13.3

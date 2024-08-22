@@ -1,0 +1,4 @@
+-r base.in
+stable-baselines3==2.0.0a5
+numpy<2.0,>=1.13.3
+rich
