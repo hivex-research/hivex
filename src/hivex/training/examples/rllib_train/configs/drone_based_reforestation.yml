@@ -1,0 +1,10 @@
+name: "DroneBasedReforestation_V0"
+tag: "DroneBasedReforestation"
+policy: "PPO" # "IMPALA"
+file_name: "hivex-environments/Hivex_DroneBasedReforestation_win/Hivex_DroneBasedReforestation.exe"
+episode_horizon: 2000
+env_parameters:
+  training: 1
+  difficulty: 1
+  task: 0
+no_graphics: True

@@ -28,7 +28,7 @@ engine_settings:
   no_graphics: true
 
 env_settings:
-  env_path: /dev_environments/Hivex_WindFarmControl_win
+  env_path: hivex-environments/Hivex_WindFarmControl_win
   # training: 5000, inference: 6000
   seed: 5000
 
