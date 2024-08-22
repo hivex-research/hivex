@@ -17,29 +17,18 @@
 from hivex.training.framework_wrappers.unity_gym.unity_gym_wrapper import (
     HivexGymWrapper,
 )
-from hivex.training.framework_wrappers.wrapper_utils import (
-    EnvironmentParametersChannel,
-    UnityEnvironment,
-)
+from hivex.training.framework_wrappers.wrapper_utils import initialize_unity_environment
 
 ENV_PATH = "tests/environments/hivex_test_env_rolling_ball_headless_win/ML-Rolling-Ball_Unity.exe"
+WORKER_ID = 0
 
 
-def test_gym_random_actions():
-    channel = EnvironmentParametersChannel()
-    channel.set_float_parameter("agent_type", 0)
-    unity_env = UnityEnvironment(
-        file_name=ENV_PATH,
-        worker_id=0,
-        base_port=6000,
-        no_graphics=True,
-        side_channels=[channel],
-    )
-    unity_env.reset()
+def train():
+    unity_env = initialize_unity_environment(0, ENV_PATH, WORKER_ID)
 
     gym_env = HivexGymWrapper(unity_env=unity_env)
 
-    print_per_step_results = False
+    print_per_step_results = True
     for episode in range(9):
         gym_env.reset()
         tracked_agent = 0
@@ -51,7 +40,7 @@ def test_gym_random_actions():
             actions = gym_env.generate_rnd_actions()
 
             # Get the new simulation results
-            obs, rew, done, info = gym_env.step(actions)
+            obs, rew, done, _ = gym_env.step(actions)
 
             episode_rewards += rew
 
@@ -70,3 +59,7 @@ def test_gym_random_actions():
 
     gym_env.close()
     print("Closed environment")
+
+
+if __name__ == "__main__":
+    train()

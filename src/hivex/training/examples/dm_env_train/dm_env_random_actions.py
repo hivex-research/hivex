@@ -18,28 +18,19 @@ from hivex.training.framework_wrappers.unity_dm_env.unity_dm_env_wrapper import 
     dm_env,
     HivexDmEnvWrapper,
 )
-from hivex.training.framework_wrappers.wrapper_utils import (
-    EnvironmentParametersChannel,
-    UnityEnvironment,
-)
+from hivex.training.framework_wrappers.wrapper_utils import initialize_unity_environment
 
-ENV_PATH = (
-    "./tests/environment/hivex_test_env_rolling_ball_win/ML-Rolling-Ball_Unity.exe"
-)
+ENV_PATH = "tests/environments/hivex_test_env_rolling_ball_headless_win/ML-Rolling-Ball_Unity.exe"
+WORKER_ID = 0
 
 
 def train():
-    channel = EnvironmentParametersChannel()
-    channel.set_float_parameter("agent_type", 0)
-    unity_env = UnityEnvironment(
-        file_name=ENV_PATH, worker_id=0, no_graphics=False, side_channels=[channel]
-    )
-    unity_env.reset()
+    unity_env = initialize_unity_environment(0, ENV_PATH, WORKER_ID)
 
     hivex_dm_env = HivexDmEnvWrapper(unity_env=unity_env)
     StepType = dm_env._environment.StepType
 
-    print_per_step_results = False
+    print_per_step_results = True
     for episode in range(9):
         hivex_dm_env.reset()
         tracked_agent = 0
@@ -48,7 +39,7 @@ def train():
         step = 0
         while not done:
             # Generate an action for all agents
-            actions = hivex_dm_env.generate_rnd_actions()
+            actions = hivex_dm_env._action_space.generate_value()
 
             # Get the new simulation results
             time_step = hivex_dm_env.step(actions=actions)

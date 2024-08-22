@@ -1,0 +1,6 @@
+name: "WFS"
+env_parameters:
+  training: 1
+  difficulty: 1
+  task: 0
+no_graphics: True

@@ -34,7 +34,7 @@ def test_unity_environment_random_actions():
     )
     unity_env.reset()
     behavior_name, spec = check_unity_environment(env=unity_env)
-    print_per_step_results = False
+    print_per_step_results = True
 
     for episode in range(3):
         unity_env.reset()

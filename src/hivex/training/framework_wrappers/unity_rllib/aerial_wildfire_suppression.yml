@@ -1,0 +1,29 @@
+name: "AerialWildfireSuppression_V0"
+tag: "AerialWildfireSuppression"
+file_name: "env/Hivex_AerialWildfireSuppression_win/Hivex_AerialWildfireSuppression.exe"
+episode_horizon: 3000
+env_parameters:
+  training: 1
+  agent_count: 3
+difficulty: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+tasks:
+  Main Task: 0
+  Maximize Extinguishing Trees: 1
+  Maximize Preparing Trees: 2
+  Minimze Time of Fire Burning: 3
+  Protect Village: 4
+  Pick Up Water: 5
+  Drop Water: 6
+  Find Fire: 7
+  Find Village: 8
+no_graphics: True
+
+training_config:
+  lr: 0.0003
+  lambda: 0.95
+  gamma: 0.995
+  sgd_minibatch_size: 256
+  train_batch_size: 2048
+  num_sgd_iter: 3
+  clip_param: 0.2
+  model: { "fcnet_hiddens": [256, 256] }

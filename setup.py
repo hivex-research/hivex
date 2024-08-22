@@ -1,6 +1,7 @@
 from importlib import util
 from pathlib import Path
 from setuptools import setup, find_packages
+import io
 
 reqs_dir = Path("./requirements")
 
@@ -22,6 +23,11 @@ def read_requirements(filename: str):
 
 requirements_base = read_requirements("base.txt")
 
+requirements_stable_baselines3 = read_requirements("stable_baselines3.txt")
+requirements_pettingzoo = read_requirements("pettingzoo.txt")
+requirements_dm_env = read_requirements("dm_env.txt")
+requirements_rllib = read_requirements("rllib.txt")
+
 
 def get_version():
     spec = util.spec_from_file_location("metadata", "metadata.py")
@@ -40,7 +46,7 @@ setup(
     author="Philipp D Siedler",
     author_email="p.d.siedler@gmail.com",
     description=("A High-Impact Environment Suite for Multi-Agent Research"),
-    long_description=open("README.md").read(),
+    long_description=io.open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -59,4 +65,10 @@ setup(
     packages=find_packages("src"),
     python_requires=">=3.8",
     install_requires=requirements_base,
+    extras_require={
+        "stable_baselines3": requirements_stable_baselines3,
+        "pettingzoo": requirements_pettingzoo,
+        "dm_env": requirements_dm_env,
+        "rllib": requirements_rllib,
+    },
 )

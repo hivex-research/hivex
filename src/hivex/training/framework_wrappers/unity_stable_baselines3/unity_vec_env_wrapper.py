@@ -15,13 +15,16 @@
 """HIVEX UnityEnvironment to baselines3 VecEnv wrapper"""
 
 import numpy as np
-from typing import Any, Tuple, Dict, Optional, List, Union, Iterable, Type
+from typing import Any, Tuple, Dict, Optional, List, Union, Iterable, Type, Sequence
+import random
+import logging
 
-from gym import error, spaces, Wrapper
+# from gym import error, spaces, Wrapper
+from gymnasium import error, spaces, Wrapper
 from mlagents_envs.base_env import ActionTuple, DecisionSteps, TerminalSteps
 from stable_baselines3.common.vec_env import VecEnv
 
-from hivex.training.wrapper_utils import (
+from hivex.training.framework_wrappers.wrapper_utils import (
     UnityEnvironment,
     action_is_continuous,
     action_is_discrete,
@@ -176,11 +179,12 @@ class HivexVecEnvWrapper(VecEnv):
             observation (VecEnvObs): Observations of all agent(s) in the form of `np.ndarray`,
                 `Dict[str, np.ndarray]` or `Tuple[np.ndarray, ...]`.
         """
-        self.env.reset()
-        self.env.step()
 
         self.episode_steps = 0
-        # self.episode_rewards = np.zeros(self.num_agents)
+        observations, rewards, dones, info = self.parse_brain_info()
+
+        if all(dones):
+            self.env.reset()
 
         return self.parse_brain_info()[0]
 
@@ -270,13 +274,13 @@ class HivexVecEnvWrapper(VecEnv):
             dones[agent_id] = True
 
         if len(decision_steps) > 0:
-            update_observations(
+            self.multi_agent_observations = update_observations(
                 info=decision_steps,
                 multi_agent_observations=self.multi_agent_observations,
                 n_agents=self.num_agents,
             )
         if len(terminal_steps) > 0:
-            update_observations(
+            self.multi_agent_observations = update_observations(
                 info=terminal_steps,
                 multi_agent_observations=self.multi_agent_observations,
                 n_agents=self.num_agents,
@@ -299,9 +303,11 @@ class HivexVecEnvWrapper(VecEnv):
             info_dict = [dict()] * self.num_agents
 
         dones = np.array(dones)
+        multi_agent_observations = np.array(self.multi_agent_observations)
+        multi_agent_observations = np.squeeze(multi_agent_observations)
 
         return (
-            self.multi_agent_observations,
+            multi_agent_observations,
             self.multi_agent_rewards,
             dones,
             info_dict,

@@ -1,0 +1,10 @@
+name: "AerialWildfireSuppression_V0"
+tag: "AerialWildfireSuppression"
+policy: "PPO" # "IMPALA"
+file_name: "hivex-environments/Hivex_AerialWildfireSuppression_win/Hivex_AerialWildfireSuppression.exe"
+episode_horizon: 3000
+env_parameters:
+  training: 1
+  difficulty: 1
+  task: 0
+no_graphics: True

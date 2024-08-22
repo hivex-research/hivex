@@ -1,0 +1,3 @@
+-r base.in
+pettingzoo==1.15.0
+numpy==1.21.2
