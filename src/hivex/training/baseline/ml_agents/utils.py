@@ -6,7 +6,8 @@ from pathlib import Path
 from tqdm import tqdm
 import os
 
-ROOT = Path(__file__).parent
+MLAGENTS_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).parent.parent.parent.parent.parent.parent
 
 
 def construct_command(config_path, experiment_name="", force=True, train=True):
@@ -57,11 +58,11 @@ def create_config_files(
 ):
 
     tmp_file_paths = []
-    with open(ROOT.as_posix() + config_path.as_posix(), "r") as f:
+    with open(MLAGENTS_ROOT.as_posix() + config_path.as_posix(), "r") as f:
         configuration = yaml.safe_load(f)
 
         configuration["env_settings"]["env_path"] = (
-            ROOT.as_posix() + configuration["env_settings"]["env_path"]
+            PROJECT_ROOT.as_posix() + "/" + configuration["env_settings"]["env_path"]
         )
 
         all_range_parameter_keys = []
@@ -99,7 +100,7 @@ def create_training_config_files(
     experiment_name: str, train_config_path: Path, train_run_count: int
 ):
 
-    output_folder_path = ROOT / Path("configs/mlagents/tmp/train")
+    output_folder_path = MLAGENTS_ROOT / Path("configs/mlagents/tmp/train")
     output_folder_path.mkdir(parents=True, exist_ok=True)
 
     return create_config_files(
@@ -114,7 +115,7 @@ def create_test_config_files(
     test_config_path: Path, experiment_name: str, test_run_count: int
 ):
 
-    output_folder_path = ROOT / Path("configs/mlagents/tmp/test")
+    output_folder_path = MLAGENTS_ROOT / Path("configs/mlagents/tmp/test")
     output_folder_path.mkdir(parents=True, exist_ok=True)
 
     train_results_dir = Path(f"results/{experiment_name}/train")

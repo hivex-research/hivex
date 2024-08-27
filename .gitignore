@@ -168,15 +168,12 @@ cython_debug/
 /docs/images/hivex_HX_logo.png
 /dev
 /results
+/notebooks/results
 /src/hivex/training/baseline/ml_agents/configs/mlagents/tmp
-docs/html
+/hivex-environments
+/docs/html
+/src/hivex/training/baseline/ml_agents/dev_environments/*
+/src/hivex/training/baseline/rllib
 
 example_pdoc_html_creation.txt
 debug_sandbox.py
-
-src/hivex/training/baseline/ml_agents/dev_environments/*
-src/hivex/training/baseline/rllib
-README_ORIGINAL.md
-sandbox.py
-wandb
-# /requirements
