@@ -17,6 +17,9 @@
 from typing import List, Tuple, Union, Optional
 import numpy as np
 
+# hivex
+from hivex.environment_registry import HivexEnvironmentRegistry
+
 # ML-Agents
 from mlagents_envs.environment import UnityEnvironment
 from mlagents_envs.side_channel.environment_parameters_channel import (
@@ -46,7 +49,7 @@ def initialize_unity_environment(
     if env_path:
         engine_config_channel = EngineConfigurationChannel()
         engine_config_channel.set_configuration_parameters(time_scale=time_scale)
-        unity_env = UnityEnvironment(
+        hivex_unity_env = UnityEnvironment(
             file_name=env_path,
             worker_id=worker_id,
             no_graphics=no_graphics,
@@ -54,19 +57,17 @@ def initialize_unity_environment(
         )
     else:
         stats_channel = StatsSideChannel()
-        registry = UnityEnvRegistry()
-        registry.register_from_yaml(
-            "https://raw.githubusercontent.com/hivex-research/hivex-environments/main/hivex_environment_registry.yaml"
-        )
-        unity_env = registry[hivex_env_tag].make(
+        hivex_registry = HivexEnvironmentRegistry()
+        hivex_unity_env = hivex_registry.make_env(
+            environment_tag=hivex_env_tag,
             no_graphics=no_graphics,
             worker_id=worker_id,
             side_channels=[env_parameter_channel, stats_channel],
         )
 
-    unity_env.reset()
+    hivex_unity_env.reset()
 
-    return unity_env
+    return hivex_unity_env
 
 
 def check_unity_environment(env: UnityEnvironment) -> tuple([str, dict()]):
