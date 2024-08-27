@@ -34,7 +34,7 @@ gputil==1.4.0
     # via -r requirements\rllib.in
 gymnasium==0.28.1
     # via ray
-idna==3.7
+idna==3.8
     # via requests
 imageio==2.35.1
     # via scikit-image
@@ -99,7 +99,7 @@ referencing==0.35.1
     #   jsonschema-specifications
 requests==2.32.3
     # via ray
-rich==13.7.1
+rich==13.8.0
     # via
     #   ray
     #   typer
@@ -119,13 +119,13 @@ six==1.16.0
     # via python-dateutil
 tensorboardx==2.6.2.2
     # via ray
-tifffile==2024.8.10
+tifffile==2024.8.24
     # via scikit-image
-typer==0.12.4
+typer==0.12.5
     # via ray
 tzdata==2024.1
     # via pandas
 urllib3==2.2.2
     # via requests
-zipp==3.20.0
+zipp==3.20.1
     # via importlib-metadata

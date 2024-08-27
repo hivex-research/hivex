@@ -27,6 +27,7 @@ requirements_stable_baselines3 = read_requirements("stable_baselines3.txt")
 requirements_pettingzoo = read_requirements("pettingzoo.txt")
 requirements_dm_env = read_requirements("dm_env.txt")
 requirements_rllib = read_requirements("rllib.txt")
+requirements_ml_agents = read_requirements("ml_agents.txt")
 
 
 def get_version():
@@ -70,5 +71,6 @@ setup(
         "pettingzoo": requirements_pettingzoo,
         "dm_env": requirements_dm_env,
         "rllib": requirements_rllib,
+        "ml_agents": requirements_ml_agents,
     },
 )

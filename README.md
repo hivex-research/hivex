@@ -74,9 +74,9 @@ as follows:
 
 Note: If you want to use a custom directory for your environments and use the `train_test_pipeline.py` script to reproduce results from the paper, adjust the env_path in the config files here `src\hivex\training\baseline\ml_agents\configs\mlagents`.
 
-### Option 2: Use the UnityEnvironmentRegistry
+### Option 2: Use the UnityEnvRegistry
 
-There is an option to use the `UnityEnvironmentRegistry`, so you don't have to download the environments manually. This is how you can include automatic environment download and un-zipping using code:
+There is an option to use the `UnityEnvRegistry`, so you don't have to download the environments manually. This is how you can include automatic environment download and un-zipping using code:
 
 ```python
 # import dependencies
@@ -106,6 +106,12 @@ unity_env = registry["WindFarmControl"].make(
 ## 🧪 Reproducing Paper Results
 
 Download the HIVEX environment binaries localy as described in [Download HIVEX Environments](#download-hivex-environments).
+
+### Install dependencies:
+
+1. Install dependencies for **ML-Agents**
+
+   <pre><code>pip install hivex[<span style="color: #ff5733;">ml_agents</span>]</code></pre>
 
 ### Option 1: Train and Test using ML-Agents locally
 
