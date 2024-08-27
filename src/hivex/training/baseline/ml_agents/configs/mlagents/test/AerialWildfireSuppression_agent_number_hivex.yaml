@@ -1,0 +1,48 @@
+behaviors:
+  Agent:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 256
+      buffer_size: 4096
+      learning_rate: 0
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 2
+      vis_encode_type: simple
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+    keep_checkpoints: 5
+    max_steps: 180000 # 3 agents a 3000 steps = 9000 * 20
+    time_horizon: 4096
+    summary_freq: 9000 # 3 agents a 3000 steps = 9000
+    threaded: true
+
+engine_settings:
+  no_graphics: true
+
+env_settings:
+  env_path: hivex-environments/Hivex_AerialWildfireSuppression_win
+  # training: 5000, inference: 6000
+  seed: 6000
+
+environment_parameters:
+  difficulty: [1]
+  task: [0]
+  # Main Task: 0
+  # Maximize Extinguishing Trees: 1
+  # Maximize Preparing Trees: 2
+  # Minimze Time of Fire Burning: 3
+  # Protect Village: 4
+  # Pick Up Water: 5
+  # Drop Water: 6
+  # Find Fire: 7
+  # Find Village: 8
+  agent_count: [1, 2, 3, 6, 9, 12]

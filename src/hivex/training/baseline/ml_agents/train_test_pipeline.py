@@ -72,6 +72,7 @@ def run_pipeline(config: Path, port: str):
 
 
 if __name__ == "__main__":
+    ### BASELINE
     # Wind Farm Control
     # run_pipeline(
     #     config=Path(
@@ -107,3 +108,26 @@ if __name__ == "__main__":
         ),
         port="5009",
     )
+
+    ### AGENT NUMBER SCALE
+    # Wind Farm Control
+    # run_pipeline(
+    #     config=Path(
+    #         "src/hivex/training/baseline/ml_agents/configs/experiments/WindFarmControl_agent_number_hivex.yaml"
+    #     ),
+    #     port="5010",
+    # )
+    # Drone-Based Reforestation
+    # run_pipeline(
+    #     config=Path(
+    #         "src/hivex/training/baseline/ml_agents/configs/experiments/DroneBasedReforestation_agent_number_hivex.yaml"
+    #     ),
+    #     port="5011",
+    # )
+    # Aerial Wildfire Suppression
+    # run_pipeline(
+    #     config=Path(
+    #         "src/hivex/training/baseline/ml_agents/configs/experiments/AerialWildfireSuppression_agent_number_hivex.yaml"
+    #     ),
+    #     port="5012",
+    # )
