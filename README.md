@@ -249,6 +249,39 @@ Apart from the [🧪 Reproducing Paper Results](#reproducing-paper-results) sect
 ```shell
 notebooks/ml_agents_training_example_MADDPG.ipynb
 ```
+## ✨ Submit your own Results to the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗
+
+You can follow the steps in the [hivex-results repository](https://github.com/hivex-research/hivex-results?tab=readme-ov-file#submit-your-own-results-to-the-hivex-leaderboard-on-huggingface-) or stay here and follow these steps:
+
+1. Install all dependencies as described [above](https://github.com/hivex-research/hivex?tab=readme-ov-file#-installation-using-conda-virtual-environment-recommended).
+
+2. Run the Train and Test Pipeline, either using [ML-Agents](https://github.com/hivex-research/hivex/tree/main?tab=readme-ov-file#-reproducing-paper-results) or with your [favorite framework](https://github.com/hivex-research/hivex/tree/main?tab=readme-ov-file#-additional-environments-and-training-frameworks).
+
+3. Clone the [hivex-results repository](https://github.com/hivex-research/hivex-results/tree/master).
+
+4. In your local [hivex-results repository](https://github.com/hivex-research/hivex-results/tree/master), add your results to the respective environment/train and environment/test folders. We have provided a `train_dummy_folder` and `test_dummy_folder` with results for training and testing on the Wind Farm Control environment.
+
+5. Run `find_best_models.py`
+
+This script generates data from your results.
+
+```shell
+python tools/huggingface/find_best_models.py
+```
+
+6. Run `generate_hf_yaml.py`
+
+Uncomment the environment data parser you need for your data. For example, for our dummy data, we need `generate_yaml_WFC(data['WindFarmControl'], key)`. This script takes the data generated in the previous step and turns it into folders including the checkpoint etc. of your training run and a `README.md`, which serves as the model card including important meta-data that is needed for the automatic fetching of the leaderboard of your model.
+
+```shell
+python tools/huggingface/generate_hf_yaml.py
+```
+
+7. Finally, upload the content of the generated folder(s) to Huggingface 🤗 as a new model.
+
+8. Every 24 hours, the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to p.d.siedler@gmail.com.
+
+**Congratulations, you did it 🚀!**
 
 ## 🤝 Contributing
 
