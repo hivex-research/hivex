@@ -139,7 +139,7 @@ notebooks/ml_agents_reproducing_paper_results.ipynb
 
 ### 📊 Baseline Results
 
-All results can be found in the [hivex-results](https://github.com/hivex-research/hivex-results) repository.
+All results can be found in the [hivex-results](https://github.com/hivex-research/hivex-results) repository. Or on the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗. Full details on the training runs can be found on [google drive](https://drive.google.com/drive/folders/1vOvnMtlQL0zSWivlUKA1oZAh-mineogP?usp=drive_link), which we could not upload due to space constraints.
 
 ## 📚 Additional Environments and Training Frameworks
 
@@ -257,6 +257,7 @@ Apart from the [🧪 Reproducing Paper Results](#reproducing-paper-results) sect
 ```shell
 notebooks/ml_agents_training_example_MADDPG.ipynb
 ```
+
 ## ✨ Submit your own Results to the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗
 
 You can follow the steps in the [hivex-results repository](https://github.com/hivex-research/hivex-results?tab=readme-ov-file#submit-your-own-results-to-the-hivex-leaderboard-on-huggingface-) or stay here and follow these steps:
