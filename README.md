@@ -288,7 +288,7 @@ python tools/huggingface/generate_hf_yaml.py
 
 7. Finally, upload the content of the generated folder(s) to Huggingface 🤗 as a new model.
 
-8. Every 24 hours, the <!--- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to <!--- p.d.siedler@gmail.com. -->
+8. Every 24 hours, the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to p.d.siedler@gmail.com.
 
 **Congratulations, you did it 🚀!**
 
@@ -316,7 +316,7 @@ Thank you for contributing to the HIVEX project!
 ## 📝 Citing HIVEX
 
 If you are using hivex in your work, please cite:
-<!---
+
 ```bibtex
 @software{siedler_hivex_2024,
    author={Philipp D. Siedler},
@@ -326,4 +326,3 @@ If you are using hivex in your work, please cite:
    url={https://github.com/hivex-research/hivex},
 }
 ```
--->
