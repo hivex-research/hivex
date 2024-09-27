@@ -139,7 +139,7 @@ notebooks/ml_agents_reproducing_paper_results.ipynb
 
 ### 📊 Baseline Results
 
-All results can be found in the [hivex-results](https://github.com/hivex-research/hivex-results) repository. Or on the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗. Full details on the training runs can be found on [google drive](https://drive.google.com/drive/folders/1vOvnMtlQL0zSWivlUKA1oZAh-mineogP?usp=drive_link), which we could not upload due to space constraints.
+All results can be found in the [hivex-results](https://github.com/hivex-research/hivex-results) repository. Or on the HIVEX Leaderboard <!-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> on Huggingface 🤗. Full details on the training runs can be found on [google drive](https://drive.google.com/drive/folders/1vOvnMtlQL0zSWivlUKA1oZAh-mineogP?usp=drive_link), which we could not upload due to space constraints.
 
 ## 📚 Additional Environments and Training Frameworks
 
@@ -258,7 +258,7 @@ Apart from the [🧪 Reproducing Paper Results](#reproducing-paper-results) sect
 notebooks/ml_agents_training_example_MADDPG.ipynb
 ```
 
-## ✨ Submit your own Results to the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗
+## ✨ Submit your own Results to the HIVEX Leaderboard <!-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> on Huggingface 🤗
 
 You can follow the steps in the [hivex-results repository](https://github.com/hivex-research/hivex-results?tab=readme-ov-file#submit-your-own-results-to-the-hivex-leaderboard-on-huggingface-) or stay here and follow these steps:
 
@@ -288,7 +288,7 @@ python tools/huggingface/generate_hf_yaml.py
 
 7. Finally, upload the content of the generated folder(s) to Huggingface 🤗 as a new model.
 
-8. Every 24 hours, the [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to p.d.siedler@gmail.com.
+8. Every 24 hours, the HIVEX Leaderboard <!-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to <!-- p.d.siedler@gmail.com. -->
 
 **Congratulations, you did it 🚀!**
 
@@ -317,6 +317,7 @@ Thank you for contributing to the HIVEX project!
 
 If you are using hivex in your work, please cite:
 
+<!--
 ```bibtex
 @software{siedler_hivex_2024,
    author={Philipp D. Siedler},
@@ -326,3 +327,4 @@ If you are using hivex in your work, please cite:
    url={https://github.com/hivex-research/hivex},
 }
 ```
+-->
