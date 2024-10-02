@@ -5,9 +5,7 @@ from mlagents_envs.environment import UnityEnvironment
 class HivexEnvironmentRegistry:
     def __init__(self) -> None:
         self.registry = UnityEnvRegistry()
-        self.registry.register_from_yaml(
-            "https://raw.githubusercontent.com/hivex-research/hivex-environments/main/hivex_environment_registry.yaml"
-        )
+        self.registry.register_from_yaml("[ANONYMIZED]")
 
     def make_env(self, environment_tag: str, **kwargs) -> UnityEnvironment:
         return self.registry[environment_tag].make(**kwargs)

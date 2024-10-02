@@ -16,21 +16,21 @@ The motivation of the hivex suite is to provide advanced reinforcement learning 
 
 ## ⚡ Quick Overview (TL;DR)
 
-- Download available [HIVEX Environments](https://github.com/hivex-research/hivex-environments)
-- Reproducing HIVEX baselines results: [Train-Test-Pipeline Script](https://github.com/hivex-research/hivex/blob/main/src/hivex/training/baseline/ml_agents/train_test_pipeline.py)
-- Additional frameworks: [Training Examples](https://github.com/hivex-research/hivex/tree/main/src/hivex/training/examples)
-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗
-- [HIVEX result plots](https://github.com/hivex-research/hivex-results) on GitHub :octocat:
+- Download available HIVEX Environments [ANONYMIZED]
+- Reproducing HIVEX baselines results: Train-Test-Pipeline Script [ANONYMIZED]
+- Additional frameworks: Training Examples [ANONYMIZED]
+- HIVEX Leaderboard [ANONYMIZED] on Huggingface 🤗
+- HIVEX result plots [ANONYMIZED] on GitHub :octocat:
 
 ## Available Environments
 
-| Thumbnail                                                                                                                                                                                                                                                                                               | Title                        | Tag                                     | Tasks          | Difficulty Levels |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------- | -------------- | ----------------- |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_WindFarmControl/"><img src="https://github.com/hivex-research/hivex/blob/main/docs/images/WFC_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Wind Farm Control"></a>                      | Wind Farm Control            | <code>WindFarmControl</code>            | <code>2</code> | <code>9</code>    |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_WilfireResourceManagement/"><img src="https://github.com/hivex-research/hivex/blob/main/docs/images/WRM_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Wildfire Resource Management"></a> | Wildfire Resource Management | <code>WildfireResourceManagement</code> | <code>3</code> | <code>10</code>   |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_DroneBasedReforestation/"><img src="https://github.com/hivex-research/hivex/blob/main/docs/images/DBR_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Drone-Based Reforestation"></a>      | Drone-Based Reforestation    | <code>DroneBasedReforestation</code>    | <code>7</code> | <code>10</code>   |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_OceanPlasticCollection/"><img src="https://github.com/hivex-research/hivex/blob/main/docs/images/OPC_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Ocean Plastic Collection"></a>        | Ocean Plastic Collection     | <code>OceanPlasticCollection</code>     | <code>4</code> | <code>-</code>    |
-| <a href="https://github.com/hivex-research/hivex-environments/master/environments/Hivex_AerialWildfireSuppression/"><img src="https://github.com/hivex-research/hivex/blob/main/docs/images/AWS_thumb.jpg" height="auto" width="300" style="border-radius:10px" alt="Aerial Wildfire Suppression"></a>  | Aerial Wildfire Suppression  | <code>AerialWildFireSuppression</code>  | <code>9</code> | <code>10</code>   |
+| Thumbnail                                                                                                                                   | Title                        | Tag                                     | Tasks          | Difficulty Levels |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------- | -------------- | ----------------- |
+| <a href="[ANONYMIZED]"><img src="[ANONYMIZED]" height="auto" width="300" style="border-radius:10px" alt="Wind Farm Control"></a>            | Wind Farm Control            | <code>WindFarmControl</code>            | <code>2</code> | <code>9</code>    |
+| <a href="[ANONYMIZED]"><img src="[ANONYMIZED]" height="auto" width="300" style="border-radius:10px" alt="Wildfire Resource Management"></a> | Wildfire Resource Management | <code>WildfireResourceManagement</code> | <code>3</code> | <code>10</code>   |
+| <a href="[ANONYMIZED]"><img src="[ANONYMIZED]" height="auto" width="300" style="border-radius:10px" alt="Drone-Based Reforestation"></a>    | Drone-Based Reforestation    | <code>DroneBasedReforestation</code>    | <code>7</code> | <code>10</code>   |
+| <a href="[ANONYMIZED]"><img src="[ANONYMIZED]" height="auto" width="300" style="border-radius:10px" alt="Ocean Plastic Collection"></a>     | Ocean Plastic Collection     | <code>OceanPlasticCollection</code>     | <code>4</code> | <code>-</code>    |
+| <a href="[ANONYMIZED]"><img src="[ANONYMIZED]" height="auto" width="300" style="border-radius:10px" alt="Aerial Wildfire Suppression"></a>  | Aerial Wildfire Suppression  | <code>AerialWildFireSuppression</code>  | <code>9</code> | <code>10</code>   |
 
 <br>
 
@@ -55,7 +55,7 @@ as follows:
 3. Install `hivex`:
 
    ```shell
-   git clone git@github.com:hivex-research/hivex.git
+   git clone git@github.com:[ANONYMIZED]
    cd hivex
    pip install -e .
    ```
@@ -64,10 +64,10 @@ as follows:
 
 ### Option 1: Download / Clone binaries locally
 
-1. Download the HIVEX environment binaries for your operating system from the [hivex-environments](https://github.com/hivex-research/hivex-environments) repository:
+1. Download the HIVEX environment binaries for your operating system from the hivex-environments [ANONYMIZED] repository:
 
    ```shell
-   git clone git@github.com:hivex-research/hivex-environments.git
+   git clone git@github.com:[ANONYMIZED]
    ```
 
 2. Please make sure to un-zip the environment folders.
@@ -80,7 +80,7 @@ as follows:
    - `hivex-environments/Hivex_OceanPlasticCollection_win/Hivex_OceanPlasticCollection.exe`
    - `hivex-environments/Hivex_AerialWildfireSuppression_win/Hivex_AerialWildfireSuppression.exe`
 
-Note: If you want to use a custom directory for your environments and use the `train_test_pipeline.py` script to reproduce results from the paper, adjust the env_path in the config files here `src\hivex\training\baseline\ml_agents\configs\mlagents`.
+Note: If you want to use a custom directory for your environments and use the `train_test_pipeline.py` script to reproduce results from the paper, adjust the env_path in the config files here `src/hivex/training/baseline/ml_agents/configs/mlagents`.
 
 ### Option 2: Use the UnityEnvRegistry
 
@@ -99,7 +99,7 @@ stats_channel = StatsSideChannel()
 # register hivex environments
 registry = UnityEnvRegistry()
 registry.register_from_yaml(
-   "https://raw.githubusercontent.com/hivex-research/hivex-environments/main/hivex_environment_registry.yaml"
+   "[ANONYMIZED]"
 )
 
 # initialize environment
@@ -131,7 +131,7 @@ python src/hivex/training/baseline/ml_agents/train_test_pipeline.py
 
 ### Option 2: Train and Test using ML-Agents in Jupyter Notebook
 
-[![Jupyter](https://img.shields.io/badge/ML%20Agents%20Reproducing%20Paper%20Results-Notebook-orange?style=flat-square&logo=jupyter)](https://github.com/hivex-research/hivex/blob/main/notebooks/ml_agents_reproducing_paper_results.ipynb)
+[![Jupyter](https://img.shields.io/badge/ML%20Agents%20Reproducing%20Paper%20Results-Notebook-orange?style=flat-square&logo=jupyter)]([ANONYMIZED])
 
 ```shell
 notebooks/ml_agents_reproducing_paper_results.ipynb
@@ -139,7 +139,7 @@ notebooks/ml_agents_reproducing_paper_results.ipynb
 
 ### 📊 Baseline Results
 
-All results can be found in the [hivex-results](https://github.com/hivex-research/hivex-results) repository. Or on the HIVEX Leaderboard <!-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> on Huggingface 🤗. Full details on the training runs can be found on [google drive](https://drive.google.com/drive/folders/1vOvnMtlQL0zSWivlUKA1oZAh-mineogP?usp=drive_link), which we could not upload due to space constraints.
+All results can be found in the hivex-results [ANONYMIZED] repository. Or on the HIVEX Leaderboard [ANONYMIZED] on Huggingface 🤗. Full details on the training runs can be found on [google drive](https://drive.google.com/drive/folders/1vOvnMtlQL0zSWivlUKA1oZAh-mineogP?usp=drive_link), which we could not upload due to space constraints.
 
 ## 📚 Additional Environments and Training Frameworks
 
@@ -211,7 +211,7 @@ Or
 
 #### Alternatively you can run training using PPO or A2C using Stable Baselines3 in a Jupyter Notebook:
 
-[![Jupyter](https://img.shields.io/badge/Stable%20Baselines3%20PPO%20&%20A2C-Notebook-orange?style=flat-square&logo=jupyter)](https://github.com/hivex-research/hivex/blob/main/notebooks/vec_env_training_example.ipynb)
+[![Jupyter](https://img.shields.io/badge/Stable%20Baselines3%20PPO%20&%20A2C-Notebook-orange?style=flat-square&logo=jupyter)]([ANONYMIZED])
 
 ```shell
 notebooks/vec_env_training_example.ipynb
@@ -229,11 +229,11 @@ notebooks/vec_env_training_example.ipynb
    python src/hivex/training/examples/rllib_train/rllib_train.py
    ```
 
-If you want to run any other [algorithm](https://docs.ray.io/en/latest/rllib/rllib-algorithms.html) from RLlib, you have to adjust the `policy` field in the corresponding [config file](src\hivex\training\examples\rllib_train\configs\aerial_wildfire_suppression.yml). Currently you can use `PPO` and `IMPALA`.
+If you want to run any other [algorithm](https://docs.ray.io/en/latest/rllib/rllib-algorithms.html) from RLlib, you have to adjust the `policy` field in the corresponding config file [ANONYMIZED]. Currently you can use `PPO` and `IMPALA`.
 
 #### Alternatively you can run training using PPO or IMPALA using RLlib in a Jupyter Notebook:
 
-[![Jupyter](https://img.shields.io/badge/RLlib%20PPO%20&%20IMPALA-Notebook-orange?style=flat-square&logo=jupyter)](https://github.com/hivex-research/hivex/blob/main/notebooks/rllib_training_example.ipynb)
+[![Jupyter](https://img.shields.io/badge/RLlib%20PPO%20&%20IMPALA-Notebook-orange?style=flat-square&logo=jupyter)]([ANONYMIZED])
 
 ```shell
 notebooks/rllib_training_example.ipynb
@@ -252,23 +252,23 @@ pip-compile-multi --autoresolve
 
 Apart from the [🧪 Reproducing Paper Results](#reproducing-paper-results) section, we also provide a notebook showing how to use ML-Agents and `hivex-environments` using a from scratch implemented `MADDPG`. This also acts as an example of how you can implement your own algorithms and use our environments. A Jupyter Notebook can be found here:
 
-[![Jupyter](https://img.shields.io/badge/ML%20Agents%20MADDPG-Notebook-orange?style=flat-square&logo=jupyter)](https://github.com/hivex-research/hivex/blob/main/notebooks/ml_agents_training_example_MADDPG.ipynb)
+[![Jupyter](https://img.shields.io/badge/ML%20Agents%20MADDPG-Notebook-orange?style=flat-square&logo=jupyter)]([ANONYMIZED])
 
 ```shell
 notebooks/ml_agents_training_example_MADDPG.ipynb
 ```
 
-## ✨ Submit your own Results to the HIVEX Leaderboard <!-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> on Huggingface 🤗
+## ✨ Submit your own Results to the HIVEX Leaderboard [ANONYMIZED] on Huggingface 🤗
 
-You can follow the steps in the [hivex-results repository](https://github.com/hivex-research/hivex-results?tab=readme-ov-file#submit-your-own-results-to-the-hivex-leaderboard-on-huggingface-) or stay here and follow these steps:
+You can follow the steps in the hivex-results repository [ANONYMIZED] or stay here and follow these steps:
 
-1. Install all dependencies as described [above](https://github.com/hivex-research/hivex?tab=readme-ov-file#-installation-using-conda-virtual-environment-recommended).
+1. Install all dependencies as described above [ANONYMIZED].
 
-2. Run the Train and Test Pipeline, either using [ML-Agents](https://github.com/hivex-research/hivex/tree/main?tab=readme-ov-file#-reproducing-paper-results) or with your [favorite framework](https://github.com/hivex-research/hivex/tree/main?tab=readme-ov-file#-additional-environments-and-training-frameworks).
+2. Run the Train and Test Pipeline, either using ML-Agents [ANONYMIZED] or with your favorite framework [ANONYMIZED].
 
-3. Clone the [hivex-results repository](https://github.com/hivex-research/hivex-results/tree/master).
+3. Clone the hivex-results repository [ANONYMIZED].
 
-4. In your local [hivex-results repository](https://github.com/hivex-research/hivex-results/tree/master), add your results to the respective environment/train and environment/test folders. We have provided a `train_dummy_folder` and `test_dummy_folder` with results for training and testing on the Wind Farm Control environment.
+4. In your local hivex-results repository [ANONYMIZED], add your results to the respective environment/train and environment/test folders. We have provided a `train_dummy_folder` and `test_dummy_folder` with results for training and testing on the Wind Farm Control environment.
 
 5. Run `find_best_models.py`
 
@@ -288,7 +288,7 @@ python tools/huggingface/generate_hf_yaml.py
 
 7. Finally, upload the content of the generated folder(s) to Huggingface 🤗 as a new model.
 
-8. Every 24 hours, the HIVEX Leaderboard <!-- [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) --> is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to <!-- p.d.siedler@gmail.com. -->
+8. Every 24 hours, the HIVEX Leaderboard [ANONYMIZED] is fetching new models. We will review your model as soon as possible and add it to the verified list of models as soon as possible. If you have any questions, please feel free to reach out to [ANONYMIZED]
 
 **Congratulations, you did it 🚀!**
 
@@ -317,14 +317,12 @@ Thank you for contributing to the HIVEX project!
 
 If you are using hivex in your work, please cite:
 
-<!--
 ```bibtex
-@software{siedler_hivex_2024,
-   author={Philipp D. Siedler},
-   title={HIVEX: A High-Impact Environment Suite for Multi-Agent Research},
-   year={2024},
-   month={8},
-   url={https://github.com/hivex-research/hivex},
+@software{,
+   author={},
+   title={},
+   year={},
+   month={},
+   url={},
 }
 ```
--->
