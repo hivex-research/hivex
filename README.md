@@ -22,7 +22,7 @@ The motivation of the hivex suite is to provide advanced reinforcement learning 
 - [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗
 - [HIVEX result plots](https://github.com/hivex-research/hivex-results) on GitHub :octocat:
 - Paper: [ICLR](https://openreview.net/pdf?id=ySmovxuDMi), [Extended Version](https://arxiv.org/abs/2501.04180)
-- [Talk](https://iclr.cc/virtual/2025/36914) at ICLR
+- Spotlight [oral](https://iclr.cc/virtual/2025/36914) at ICLR 2025 Workshop on Tackling Climate Change with Machine Learning: Data-Centric Approaches in ML for Climate Action.
 
 ## Available Environments
 
