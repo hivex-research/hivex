@@ -21,6 +21,8 @@ The motivation of the hivex suite is to provide advanced reinforcement learning 
 - Additional frameworks: [Training Examples](https://github.com/hivex-research/hivex/tree/main/src/hivex/training/examples)
 - [HIVEX Leaderboard](https://huggingface.co/spaces/hivex-research/hivex-leaderboard) on Huggingface 🤗
 - [HIVEX result plots](https://github.com/hivex-research/hivex-results) on GitHub :octocat:
+- Paper: [ICLR](https://openreview.net/pdf?id=ySmovxuDMi), [Extended Version](https://arxiv.org/abs/2501.04180)
+- [Talk](https://iclr.cc/virtual/2025/36914) at ICLR
 
 ## Available Environments
 
@@ -313,16 +315,29 @@ Another great way to contribute is by adding scripts that generate insightful pl
 
 Thank you for contributing to the HIVEX project!
 
+## 🎤 Talks and Presentations
+
+- Spotlight and oral [presentation](https://iclr.cc/virtual/2025/36914) at the International Conference on Learning Representations (ICLR) 2025 as part of the [Workshop](https://iclr.cc/virtual/2025/workshop/23966) on Tackling Climate Change with Machine Learning: Data-Centric Approaches in ML for Climate Action.
+- YouTube video of the [virtual presentation](https://www.youtube.com/watch?v=ErxysjNYnx0) at ICLR 2025.
+
 ## 📝 Citing HIVEX
 
-If you are using hivex in your work, please cite:
+If you are using hivex in your work, please cite our paper [HIVEX: A High-Impact Environment Suite for Multi-Agent Research (extended version)](https://arxiv.org/pdf/2501.04180):
 
 ```bibtex
-@software{siedler_hivex_2024,
-   author={Philipp D. Siedler},
-   title={HIVEX: A High-Impact Environment Suite for Multi-Agent Research},
-   year={2024},
-   month={8},
-   url={https://github.com/hivex-research/hivex},
+@article{siedler_hivex_2025,
+	title = {{HIVEX}: A High-Impact Environment Suite for Multi-Agent Research (extended version)},
+	url = {http://arxiv.org/abs/2501.04180},
+	doi = {10.48550/arXiv.2501.04180},
+	shorttitle = {{HIVEX}},
+	abstract = {Games have been vital test beds for the rapid development of Agent-based research. Remarkable progress has been achieved in the past, but it is unclear if the findings equip for real-world problems. While pressure grows, some of the most critical ecological challenges can find mitigation and prevention solutions through technology and its applications. Most real-world domains include multi-agent scenarios and require machine-machine and human-machine collaboration. Open-source environments have not advanced and are often toy scenarios, too abstract or not suitable for multi-agent research. By mimicking real-world problems and increasing the complexity of environments, we hope to advance state-of-the-art multi-agent research and inspire researchers to work on immediate real-world problems. Here, we present {HIVEX}, an environment suite to benchmark multi-agent research focusing on ecological challenges. {HIVEX} includes the following environments: Wind Farm Control, Wildfire Resource Management, Drone-Based Reforestation, Ocean Plastic Collection, and Aerial Wildfire Suppression. We provide environments, training examples, and baselines for the main and sub-tasks. All trained models resulting from the experiments of this work are hosted on Hugging Face. We also provide a leaderboard on Hugging Face and encourage the community to submit models trained on our environment suite.},
+	number = {{arXiv}:2501.04180},
+	publisher = {{arXiv}},
+	author = {Siedler, Philipp Dominic},
+	urldate = {2025-01-22},
+	date = {2025-01-21},
+	eprinttype = {arxiv},
+	eprint = {2501.04180 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computer Science and Game Theory, Computer Science - Multiagent Systems},
 }
 ```
