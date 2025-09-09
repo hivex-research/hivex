@@ -341,3 +341,21 @@ If you are using hivex in your work, please cite our paper [HIVEX: A High-Impact
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computer Science and Game Theory, Computer Science - Multiagent Systems},
 }
 ```
+
+Follow-up work: [LLM-Mediated Guidance of MARL Systems](https://arxiv.org/abs/2503.13553)
+
+```bibtex
+@article{siedler_llm-mediated_2025,
+	title = {{LLM}-{Mediated} {Guidance} of {MARL} {Systems}},
+	url = {http://arxiv.org/abs/2503.13553},
+	doi = {10.48550/arXiv.2503.13553},
+	abstract = {In complex multi-agent environments, achieving efficient learning and desirable behaviours is a significant challenge for Multi-Agent Reinforcement Learning (MARL) systems. This work explores the potential of combining MARL with Large Language Model (LLM)-mediated interventions to guide agents toward more desirable behaviours. Specifically, we investigate how LLMs can be used to interpret and facilitate interventions that shape the learning trajectories of multiple agents. We experimented with two types of interventions, referred to as controllers: a Natural Language (NL) Controller and a Rule-Based (RB) Controller. The NL Controller, which uses an LLM to simulate human-like interventions, showed a stronger impact than the RB Controller. Our findings indicate that agents particularly benefit from early interventions, leading to more efficient training and higher performance. Both intervention types outperform the baseline without interventions, highlighting the potential of LLM-mediated guidance to accelerate training and enhance MARL performance in challenging environments.},
+	urldate = {2025-09-09},
+	publisher = {arXiv},
+	author = {Siedler, Philipp D. and Gemp, Ian},
+	month = mar,
+	year = {2025},
+	note = {arXiv:2503.13553 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Multiagent Systems},
+}
+```
